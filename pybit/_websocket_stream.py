@@ -259,7 +259,8 @@ class _WebSocketManager:
         self._send_custom_ping()
 
     def _send_custom_ping(self):
-        self.ws.send(self.custom_ping_message)
+        if not self.exited:
+            self.ws.send(self.custom_ping_message)
 
     def _send_initial_ping(self):
         """https://github.com/bybit-exchange/pybit/issues/164"""
